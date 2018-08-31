@@ -22,6 +22,7 @@ contentEngaged(eventName, secondsToTrigger, function (dataLayerPush) {
 
 
 
+
 // customTask Example
 customTask(function (model) {
     let tid = model.get("&tid");
