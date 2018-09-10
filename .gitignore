@@ -1,7 +1,5 @@
-<<<<<<< HEAD
 .idea
 .git
-=======
 # Logs
 logs
 *.log
@@ -64,4 +62,3 @@ typings/
 .idea
 src
 /dist
->>>>>>> 7a3f85e2ea5b2e5fe7f7ecf23b0cb1485c08f7f0
