@@ -76,8 +76,52 @@ Triggers to create:
 - **User Funnel Stage Changed**
 	- The below picture documents the configuration:
 	![alt text](img/Userfunnelstagechanged.png) 	
+- **RMF Timer**
+	- The below picture documents the configuration:
+	 ![alt text](img/RMF_timertrigger.png)
 
 Tags to create:
+
+- **GA - RMF Timer**
+	- The below screenshot and code snippt documents the 	configuration:
+	![alt text](img/RMF_timertag.png) 
+
+	- the content of the HTML in the Custom HTML Tag: 
+
+```
+<script>
+(function() {
+    // CHANGE THESE THREE:
+    var eventName = 'RMF sequence'; // The event name that is pushed into dataLayer
+    var interval = 1500; // The interval in milliseconds
+    var limit = 1; // The number of times the timer fires
+
+    // OTHER SETTINGS:
+    var timerNumber = 1;
+    var startTime = new Date().getTime();
+
+    var fireTimer = function() {
+      var timeNow = new Date().getTime();
+      window.dataLayer.push({
+        'event' : eventName,
+        'custom.timerCurrentTime' : timeNow,
+        'custom.timerElapsedTime' : timeNow - startTime,
+        'custom.timerStartTime' : startTime,
+        'custom.timerEventNumber' : timerNumber,
+        'custom.timerId' : timerId,
+        'custom.timerInterval' : interval,
+        'custom.timerLimit' : limit
+      });
+      timerNumber += 1;
+      if (limit < timerNumber) { 
+        window.clearInterval(timerId);
+      }
+    };
+
+    var timerId = window.setInterval(fireTimer, interval);
+  })();
+</script>
+```
 
 - **GA - User Funnel Stage Changed**
 	- The below screenshot documents the configuration:
